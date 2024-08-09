@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // define the base url for the API
-const baseURL = "http://localhost:3001/api/v1/";
+const baseURL = "https://music-app-backend-qcvg.onrender.com/api/v1/";
 
 const instance = axios.create({
     baseURL,
