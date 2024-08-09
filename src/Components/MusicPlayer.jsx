@@ -302,6 +302,20 @@ const getComments = async(songName) => {
     })
    }
 
+   const handleSongChangeFromLibrary = (songName)=>{
+    userServices.getAllComments(songName).then(response => {
+      if(response.data.allComments){
+        setComments(response.data.allComments)
+      }
+      
+     })
+     userServices.getAllLikes(songName).then(response=>{
+      if(response && response.data.allLikes.length>0) {
+        setLikeCount(response.data.allLikes[0].like)
+      }
+     })
+   }
+
   return (
     <div>
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}
@@ -338,6 +352,8 @@ const getComments = async(songName) => {
         handlePlayListChange={handlePlayListChange}
         isPlayListSelected={isPlayListSelected}
         deletePlayList={deletePlayList}
+        handleSongChangeFromLibrary={handleSongChangeFromLibrary}
+        setIsPlaying={setIsPlaying}
       />
       <audio
         onLoadedMetadata={timeUpdateHandler}

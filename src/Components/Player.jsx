@@ -92,6 +92,7 @@ const Player = ({
 
   //useEffect
   const activeLibraryHandler = (nextPrev) => {
+    setIsPlaying(true)
     const newSongs = songs.map((song) => {
       if (song.id === nextPrev.id) {
         return {

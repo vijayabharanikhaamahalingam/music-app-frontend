@@ -24,7 +24,9 @@ const Library = ({
   playList,
   handlePlayListChange,
   isPlayListSelected,
-  deletePlayList
+  deletePlayList,
+  handleSongChangeFromLibrary,
+  setIsPlaying
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -87,6 +89,9 @@ const Library = ({
   
   }
 
+  const handleSongChange = (songName)=>{
+    handleSongChangeFromLibrary(songName)
+  }
 
   return (
     <div className={`library ${libraryStatus ? "active" : ""}`}>
@@ -153,6 +158,8 @@ const Library = ({
             key={song.id}
             isPlayListSelected={isPlayListSelected}
             deletePlaylist={deletePlaylist}
+            handleSongChange={handleSongChange}
+            setIsPlaying={setIsPlaying}
           />
         ))}
 <Snackbar

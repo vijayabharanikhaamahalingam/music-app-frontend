@@ -12,7 +12,9 @@ const LibrarySong = ({
   setSongs,
   id,
   isPlayListSelected,
-  deletePlaylist
+  deletePlaylist,
+  handleSongChange,
+  setIsPlaying
 }) => {
   const songSelectHandler = async () => {
     await setCurrentSong(song);
@@ -31,6 +33,8 @@ const LibrarySong = ({
       }
     });
     setSongs(newSongs);
+    handleSongChange(song.name)
+    setIsPlaying(true)
     //check if song is playing
     if (isPlaying) audioRef.current.play();
   };
